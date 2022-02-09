@@ -18,8 +18,8 @@ export class AppComponent {
               public translate: TranslateService){
     this.settings = this.appSettings.settings;
     translate.addLangs(['en','de','fr','ru','tr']);
-    translate.setDefaultLang('en'); 
-    translate.use('en');
+    translate.setDefaultLang('fr'); 
+    translate.use('fr');
   }
 
   ngAfterViewInit(){ 

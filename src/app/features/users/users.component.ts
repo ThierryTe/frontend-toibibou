@@ -2,22 +2,24 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AppSettings, Settings } from '../../app.settings';
 import { User } from './user.model';
-import { UsersService } from './users.service';
+
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { UsersService } from 'src/app/services/users.service';
+import { UserElement } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ UsersService ]  
 })
 export class UsersComponent implements OnInit {
-    public users: User[] = [];
+    public users: UserElement[] = [];
     public searchText: string = '';
     public page:any;
     public settings: Settings;
     public maxSize:number = 5;
+    
     public autoHide:boolean = true;
     constructor(public appSettings:AppSettings, 
                 public dialog: MatDialog,

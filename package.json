@@ -1,9 +1,9 @@
 {
-  "name": "association-template",
+  "name": "location-template",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open --port 4200",
+    "start": "ng serve --open --port 4000",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

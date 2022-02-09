@@ -9,8 +9,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { MenuItem, Order, Category } from 'src/app/app.models'; 
 import { AppSettings } from 'src/app/app.settings'; 
 import { environment } from 'src/environments/environment';   
-import { ConfirmDialogComponent, ConfirmDialogModel } from './shared/confirm-dialog/confirm-dialog.component';
-import { AlertDialogComponent } from './shared/alert-dialog/alert-dialog.component';
 import { map } from 'rxjs/operators';
 
 export class Data {
@@ -157,23 +155,6 @@ export class AppService {
       autoFocus: false,
       direction: (this.appSettings.settings.rtl) ? 'rtl':'ltr'
     });  
-  }
-
-  public openConfirmDialog(title:string, message:string) {  
-    const dialogData = new ConfirmDialogModel(title, message); 
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
-      data: dialogData
-    }); 
-    return dialogRef; 
-  }
-
-  public openAlertDialog(message:string) {   
-    const dialogRef = this.dialog.open(AlertDialogComponent, {
-      maxWidth: "400px",
-      data: message
-    }); 
-    return dialogRef; 
   }
 
   public makeReservation(dialogComponent:any, data:any, onDialog:boolean = false){

@@ -11,17 +11,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
 
-export const routes = [ 
-  { 
-    path: '', 
-    component: AdminComponent, children: [
-      { path: '', loadChildren: () => import('../../features/dashboard/dashboard.module').then(m => m.DashboardModule) }, 
-      { path: 'users', loadChildren: () => import('../../features/users/users.module').then(m => m.UsersModule), data: { breadcrumb: 'Users' } },
-    ]
-  } 
-];
-
-
 
 @NgModule({
   declarations: [
@@ -36,7 +25,6 @@ export const routes = [
     SharedModule,
     MatToolbarModule,
     MatIconModule,
-    RouterModule.forChild(routes),
   ],
   exports: [
     MenuComponent,

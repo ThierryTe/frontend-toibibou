@@ -20,14 +20,11 @@ import { MatPaginatorI18nService } from './theme/utils/mat-paginator-i18n.servic
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CustomOverlayContainer } from './theme/utils/custom-overlay-container';
 import { AppInterceptor } from './theme/utils/app-interceptor';
-
-import { AssociationRoutingModule } from './association-routing.module'; 
-import { SharedModule } from './shared/shared.module'; 
 import { AppComponent } from './app.component';
 import { AppSettings } from './app.settings';
-import { AdminComponent } from './layout/admin-page/admin.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AdminModule } from './layout/admin-page/admin.module';
+import { LocationRoutingModule } from './location-routing.module';
  
 
 
@@ -37,17 +34,12 @@ import { AdminModule } from './layout/admin-page/admin.module';
     AppComponent,  
   ],
   imports: [  
-    BrowserModule.withServerTransition({ appId: 'serverApp' }), 
     BrowserAnimationsModule,
     AdminModule,
     HttpClientModule, 
     NgProgressModule,
     NgProgressHttpModule,
     MatToolbarModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I',
-      libraries: ["places"]
-    }), 
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -55,7 +47,7 @@ import { AdminModule } from './layout/admin-page/admin.module';
         deps: [HttpClient]
       }
     }),
-    AssociationRoutingModule
+    LocationRoutingModule,
     
   ],
   providers: [ 

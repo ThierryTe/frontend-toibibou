@@ -14,13 +14,12 @@ export class VerticalMenuComponent implements OnInit {
   constructor(public menuService:MenuService) { }
 
   ngOnInit() {
-    this.menuItems = this.menuService.getVerticalMenuItems();
     this.menuItems = this.menuItems.filter(item => item.parentId == this.menuParentId);
   }
 
   onClick(menuId:number){
     this.menuService.toggleMenuItem(menuId);
-    this.menuService.closeOtherSubMenus(this.menuService.getVerticalMenuItems(), menuId);    
+    
   }
 
 }

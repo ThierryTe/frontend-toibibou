@@ -4,6 +4,19 @@
 
 export const environment = {
   production: false,
+
+  auth:{
+  LOGIN_API: "http://localhost:1993/api/auth/login",
+  INSCRIPTION_API: "http://localhost:1993/api/auth/inscription",
+  ME_API: "http://localhost:1993/api/auth/me",
+  USERS_API:"http://localhost:1993/api/auth/users"
+  },
+  FRONTEND_ROUTES:{
+    ADMIN:"",
+    VUE_ADMIN: "",
+    LOGIN:"login",
+    USERS: "users"
+  },
   url: ''
 };
 
