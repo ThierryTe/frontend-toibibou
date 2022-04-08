@@ -8,3 +8,4 @@ export class Menu {
                 public hasSubMenu: boolean = false,
                 public parentId: number = 0) { }
 } 
+

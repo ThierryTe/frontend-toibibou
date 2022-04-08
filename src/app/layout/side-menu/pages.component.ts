@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Settings, AppSettings } from '../app.settings';
 import { isPlatformBrowser } from '@angular/common';
-import { AppService } from '../app.service';
+import { AppService } from 'src/app/app.service';
+import { AppSettings, Settings } from 'src/app/app.settings';
+
 
 @Component({
   selector: 'app-pages',

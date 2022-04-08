@@ -9,6 +9,7 @@ import { UserMenuComponent } from '../user-menu/user-menu.component';
 import { AdminComponent } from './admin.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { RemoteErrorMessageSnackbarComponent } from 'src/app/shared/app-toast/snackbar.component';
 
 
 
@@ -18,7 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
     MenuComponent,
     UserMenuComponent,
     FullScreenComponent,
-    BreadcrumbComponent 
+    BreadcrumbComponent,
+    RemoteErrorMessageSnackbarComponent 
   ],
   imports: [
     CommonModule,

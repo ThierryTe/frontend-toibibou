@@ -11,42 +11,269 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <app-root></app-root>
-  <div class="spinner-wrapper" id="preloader">
+  <location-root></location-root>
+ <!-- <div class="spinner-wrapper" id="preloader">
     <div class="spinner-container">
         <div class="spinner-outer">
-            <div class="spinner">   
-                <svg width="100px" height="100px" viewBox="0 0 980.000000 886.000000" class="plate"> 
-                  <g transform="translate(0.000000,886.000000) scale(0.100000,-0.100000)" stroke="none">
-                    <path d="M8120 8849 c-406 -46 -845 -241 -1225 -544 -122 -97 -337 -310 -429
-                    -425 -288 -361 -475 -789 -532 -1220 -22 -168 -15 -453 15 -591 24 -112 64
-                    -234 97 -300 22 -45 22 -48 8 -105 -42 -162 -160 -340 -359 -539 -147 -147
-                    -260 -243 -448 -377 -98 -70 -323 -214 -384 -246 -18 -10 -33 -4 -110 46 -187
-                    124 -363 282 -493 443 -282 350 -420 765 -418 1254 0 127 -4 181 -21 262 -53
-                    253 -174 479 -349 650 -37 36 -328 269 -647 517 -319 249 -787 613 -1039 810
-                    l-459 358 -93 -94 -93 -93 1060 -995 c582 -547 1083 -1016 1112 -1042 l52 -47
-                    -120 -121 -120 -120 -1077 1077 -1078 1078 -95 -95 c-52 -52 -95 -99 -95 -105
-                    0 -5 483 -493 1072 -1082 l1073 -1073 -103 -102 -102 -103 -1075 1075 -1075
-                    1075 -90 -90 -90 -90 1070 -1070 1070 -1070 -120 -120 c-91 -91 -123 -117
-                    -134 -110 -7 6 -475 499 -1040 1098 -564 598 -1030 1087 -1034 1087 -4 0 -52
-                    -44 -106 -99 l-98 -98 862 -1086 c923 -1163 903 -1141 1079 -1247 197 -118
-                    430 -180 679 -180 474 0 922 -183 1282 -524 132 -125 350 -376 350 -402 0 -5
-                    -720 -729 -1601 -1609 -880 -881 -1614 -1621 -1630 -1646 -35 -52 -65 -145
-                    -74 -226 -8 -73 13 -180 52 -260 35 -73 170 -215 249 -263 107 -64 249 -85
-                    369 -55 146 38 44 -59 1740 1636 l1570 1569 1555 -1553 c1679 -1677 1591
-                    -1594 1735 -1632 201 -52 420 36 536 216 96 150 97 354 3 518 -17 29 -610 630
-                    -1636 1656 l-1609 1611 93 140 c340 510 674 830 972 929 73 24 92 22 181 -18
-                    161 -72 351 -107 585 -107 241 0 432 29 658 102 386 123 713 321 1010 612 625
-                    610 910 1398 742 2052 -138 537 -588 968 -1125 1079 -161 33 -346 42 -505 24z
-                    m-327 -581 c-224 -202 -597 -565 -700 -680 -155 -174 -208 -251 -298 -431
-                    -125 -249 -325 -774 -360 -942 -11 -49 -25 -7 -37 107 -28 265 54 707 187
-                    1011 114 258 351 515 666 720 96 63 284 164 369 198 62 25 198 68 218 68 8 1
-                    -13 -23 -45 -51z"/>
-                  </g>
-                </svg>
+            <div class="cssload-preloader" id="loading-html-basic"> 
+                <style type="text/css" id="loading-html-basic-css">
+                    .cssload-preloader {
+                        font-family: Arial, Tahoma;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        z-index: 10;
+                        display: box;
+                        display: -o-box;
+                        display: -ms-box;
+                        display: -webkit-box;
+                        display: -moz-box;
+                        display: flex;
+                        display: -o-flex;
+                        display: -ms-flex;
+                        display: -webkit-flex;
+                        display: -moz-flex;
+                        box-pack: center;
+                        -o-box-pack: center;
+                        -ms-box-pack: center;
+                        -webkit-box-pack: center;
+                        -moz-box-pack: center;
+                        justify-content: center;
+                        -o-justify-content: center;
+                        -ms-justify-content: center;
+                        -webkit-justify-content: center;
+                        -moz-justify-content: center;
+                        box-align: center;
+                        -o-box-align: center;
+                        -ms-box-align: center;
+                        -webkit-box-align: center;
+                        -moz-box-align: center;
+                        align-items: center;
+                        -o-align-items: center;
+                        -ms-align-items: center;
+                        -webkit-align-items: center;
+                        -moz-align-items: center;
+                        transform-style: preserve-3d;
+                        -o-transform-style: preserve-3d;
+                        -ms-transform-style: preserve-3d;
+                        -webkit-transform-style: preserve-3d;
+                        -moz-transform-style: preserve-3d;
+                        perspective: 487px;
+                        -o-perspective: 487px;
+                        -ms-perspective: 487px;
+                        -webkit-perspective: 487px;
+                        -moz-perspective: 487px;
+                        overflow: hidden;
+                        animation: wobble 5.75s ease-in-out infinite;
+                        -o-animation: wobble 5.75s ease-in-out infinite;
+                        -ms-animation: wobble 5.75s ease-in-out infinite;
+                        -webkit-animation: wobble 5.75s ease-in-out infinite;
+                        -moz-animation: wobble 5.75s ease-in-out infinite;
+                        padding-bottom: 2em
+                    }
+                    
+                    .cssload-preloader>span {
+                        font-size: 49px;
+                        animation: 5.75s ease-in-out infinite;
+                        -o-animation: 5.75s ease-in-out infinite;
+                        -ms-animation: 5.75s ease-in-out infinite;
+                        -webkit-animation: 5.75s ease-in-out infinite;
+                        -moz-animation: 5.75s ease-in-out infinite;
+                        color: transparent;
+                        text-shadow: 0 0 0 #000
+                    }
+                    
+                    span:nth-child(-n+3) {
+                        animation-delay: -2.88s;
+                        -o-animation-delay: -2.88s;
+                        -ms-animation-delay: -2.88s;
+                        -webkit-animation-delay: -2.88s;
+                        -moz-animation-delay: -2.88s
+                    }
+                    
+                    span:nth-child(1),
+                    span:nth-last-child(1) {
+                        animation-name: blur-1;
+                        -o-animation-name: blur-1;
+                        -ms-animation-name: blur-1;
+                        -webkit-animation-name: blur-1;
+                        -moz-animation-name: blur-1
+                    }
+                    
+                    span:nth-child(2),
+                    span:nth-last-child(2) {
+                        animation-name: blur-2;
+                        -o-animation-name: blur-2;
+                        -ms-animation-name: blur-2;
+                        -webkit-animation-name: blur-2;
+                        -moz-animation-name: blur-2
+                    }
+                    
+                    span:nth-child(3),
+                    span:nth-last-child(3) {
+                        animation-name: blur-3;
+                        -o-animation-name: blur-3;
+                        -ms-animation-name: blur-3;
+                        -webkit-animation-name: blur-3;
+                        -moz-animation-name: blur-3
+                    }
+                    
+                    @keyframes blur-1 {
+                        50% {
+                            text-shadow: 0 0 .15em #000
+                        }
+                    }
+                    
+                    @-o-keyframes blur-1 {
+                        50% {
+                            text-shadow: 0 0 .15em #000
+                        }
+                    }
+                    
+                    @-ms-keyframes blur-1 {
+                        50% {
+                            text-shadow: 0 0 .15em #000
+                        }
+                    }
+                    
+                    @-webkit-keyframes blur-1 {
+                        50% {
+                            text-shadow: 0 0 .15em #000
+                        }
+                    }
+                    
+                    @-moz-keyframes blur-1 {
+                        50% {
+                            text-shadow: 0 0 .15em #000
+                        }
+                    }
+                    
+                    @keyframes blur-2 {
+                        50% {
+                            text-shadow: 0 0 .075em #000
+                        }
+                    }
+                    
+                    @-o-keyframes blur-2 {
+                        50% {
+                            text-shadow: 0 0 .075em #000
+                        }
+                    }
+                    
+                    @-ms-keyframes blur-2 {
+                        50% {
+                            text-shadow: 0 0 .075em #000
+                        }
+                    }
+                    
+                    @-webkit-keyframes blur-2 {
+                        50% {
+                            text-shadow: 0 0 .075em #000
+                        }
+                    }
+                    
+                    @-moz-keyframes blur-2 {
+                        50% {
+                            text-shadow: 0 0 .075em #000
+                        }
+                    }
+                    
+                    @keyframes blur-3 {
+                        50% {
+                            text-shadow: 0 0 .05em #000
+                        }
+                    }
+                    
+                    @-o-keyframes blur-3 {
+                        50% {
+                            text-shadow: 0 0 .05em #000
+                        }
+                    }
+                    
+                    @-ms-keyframes blur-3 {
+                        50% {
+                            text-shadow: 0 0 .05em #000
+                        }
+                    }
+                    
+                    @-webkit-keyframes blur-3 {
+                        50% {
+                            text-shadow: 0 0 .05em #000
+                        }
+                    }
+                    
+                    @-moz-keyframes blur-3 {
+                        50% {
+                            text-shadow: 0 0 .05em #000
+                        }
+                    }
+                    
+                    @keyframes wobble {
+                        from,
+                        to {
+                            transform: rotateY(-45deg)
+                        }
+                        50% {
+                            transform: rotateY(45deg)
+                        }
+                    }
+                    
+                    @-o-keyframes wobble {
+                        from,
+                        to {
+                            -o-transform: rotateY(-45deg)
+                        }
+                        50% {
+                            -o-transform: rotateY(45deg)
+                        }
+                    }
+                    
+                    @-ms-keyframes wobble {
+                        from,
+                        to {
+                            -ms-transform: rotateY(-45deg)
+                        }
+                        50% {
+                            -ms-transform: rotateY(45deg)
+                        }
+                    }
+                    
+                    @-webkit-keyframes wobble {
+                        from,
+                        to {
+                            -webkit-transform: rotateY(-45deg)
+                        }
+                        50% {
+                            -webkit-transform: rotateY(45deg)
+                        }
+                    }
+                    
+                    @-moz-keyframes wobble {
+                        from,
+                        to {
+                            -moz-transform: rotateY(-45deg)
+                        }
+                        50% {
+                            -moz-transform: rotateY(45deg)
+                        }
+                    }
+                </style>
+               
+                <span>C</span> <span>h</span> <span>a</span> <span>r</span> <span>g</span> <span>e</span> <span>m</span> <span>e</span> <span>n</span> <span>t</span>
+  <span> &nbsp;</span>
+  <span>L</span>
+  <span>O</span>
+  <span>C</span>
+  <span>A</span>
+  <span>T</span>
+  <span>I</span>
+  <span>O</span>
+  <span>N</span>  
             </div>    
         </div>
     </div>
-  </div>
+  </div> -->
 </body>
 </html>

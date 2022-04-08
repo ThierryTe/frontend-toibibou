@@ -10,12 +10,16 @@ export class Settings {
                 public adminSidenavIsOpened: boolean,
                 public adminSidenavIsPinned: boolean,
                 public adminSidenavUserBlock: boolean,
-
                 //additional options
                 public mainToolbarFixed:boolean,
                 public contentOffsetToTop:boolean,                
                 public headerBgImage: boolean,
-                public headerBgVideo: boolean
+                public headerBgVideo: boolean,
+                public loadingSpinner:boolean,
+                public progressBar: boolean,
+                public menu: string,
+                public fixedHeader:boolean,
+    
                 ) { }
 }
 
@@ -23,7 +27,7 @@ export class Settings {
 export class AppSettings {
     public settings = new Settings(
         'Location',    // theme name
-        'purple',       // red, green, blue, pink, purple, grey, orange-dark, custom
+        'blue',       // red, green, blue, pink, purple, grey, orange-dark, custom
         1,           // 1   
         true,        // true = sticky, false = not sticky
         'image',     // default, image, carousel
@@ -36,6 +40,10 @@ export class AppSettings {
         false,
         false,        
         false,
-        false 
+        false,
+        false,     //loadSpinner
+        false,
+       'vertical',
+       true          //progressbar     
     )
 }

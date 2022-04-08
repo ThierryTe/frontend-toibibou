@@ -9,13 +9,16 @@ export const environment = {
   LOGIN_API: "http://localhost:1993/api/auth/login",
   INSCRIPTION_API: "http://localhost:1993/api/auth/inscription",
   ME_API: "http://localhost:1993/api/auth/me",
-  USERS_API:"http://localhost:1993/api/auth/users"
+  USERS_API:"http://localhost:1993/api/auth/users",
+  REFRESH_TOKEN_API: "http://localhost:1993/api/auth/refreshtoken",
+  CHECK_IF_AM_LOGIN:''
   },
   FRONTEND_ROUTES:{
     ADMIN:"",
     VUE_ADMIN: "",
     LOGIN:"login",
-    USERS: "users"
+    USERS: "users",
+    INSCRIPTION: "inscription"
   },
   url: ''
 };
