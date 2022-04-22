@@ -1,4 +1,4 @@
-export class Location{
+export class LocationModel{
     id?:number;
     ville?:string;
     quartier?: string;
@@ -9,6 +9,7 @@ export class Location{
     condition?:string;
     images?: [];
     statut?: Statut;
+    lien?:string;
 }
 
 export enum Statut{

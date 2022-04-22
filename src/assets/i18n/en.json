@@ -29,7 +29,7 @@
   "ADMIN_NAV": {  
     "DASHBOARD": "Dashboard",  
     "MENU_ITEMS": "Menu Items", 
-    "CITY": "Cities",
+    "LOCATION": "Location",
     "MENU_ITEMS_LIST": "Menu Items List", 
     "MENU_ITEM_DETAIL": "Menu Item Detail",
     "ADD_MENU_ITEM": "Add Menu Item",

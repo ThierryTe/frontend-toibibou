@@ -5,6 +5,8 @@ import { LocationRoutingModule } from './location-routing.module';
 import { LocationComponent } from './location.component';
 import { LocationFormComponent } from './location-form/location-form.component';
 import { LocationService } from 'src/app/services/location.service';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { LocationResolver } from './location-resolver';
 
 
 @NgModule({
@@ -14,8 +16,9 @@ import { LocationService } from 'src/app/services/location.service';
   ],
   imports: [
     CommonModule,
-    LocationRoutingModule
+    LocationRoutingModule,
+    SharedModule
   ],
-  providers:[LocationService]
+  providers:[LocationService,LocationResolver]
 })
 export class LocationModule { }

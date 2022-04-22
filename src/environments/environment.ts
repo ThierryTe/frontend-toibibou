@@ -13,12 +13,16 @@ export const environment = {
   REFRESH_TOKEN_API: "http://localhost:1993/api/auth/refreshtoken",
   CHECK_IF_AM_LOGIN:''
   },
+  APP:{
+   LOCATION_API:"http://localhost:1993/api/locations"
+  },
   FRONTEND_ROUTES:{
     ADMIN:"",
     VUE_ADMIN: "",
     LOGIN:"login",
     USERS: "users",
-    INSCRIPTION: "inscription"
+    INSCRIPTION: "inscription",
+    LOCATION:'location'
   },
   url: ''
 };
