@@ -27,7 +27,7 @@ export class Settings {
 export class AppSettings {
     public settings = new Settings(
         'Location',    // theme name
-        'blue',       // red, green, blue, pink, purple, grey, orange-dark, custom
+        'green',       // red, green, blue, pink, purple, grey, orange-dark, custom
         1,           // 1   
         true,        // true = sticky, false = not sticky
         'image',     // default, image, carousel

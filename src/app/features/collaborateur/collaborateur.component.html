@@ -1,0 +1,197 @@
+
+<div fxLayout="row" fxLayoutAlign="space-between center" class="p-2">
+    <div fxLayout="row">
+        <mat-button-toggle-group #controls="matButtonToggleGroup" appearance="legacy">  
+
+            <mat-button-toggle value="add" (click)="ajout()">
+                <mat-icon>group_add</mat-icon>
+                Ajouter
+            </mat-button-toggle>
+
+            <mat-button-toggle value="search">
+                <mat-icon>search</mat-icon>
+            </mat-button-toggle>           
+        </mat-button-toggle-group>            
+    </div>
+    <form class="collaborateur-search" [class.show]="controls.value == 'search'">
+        <mat-form-field class="collaborateur-search-input">
+            <input matInput placeholder="Search collaborateur by name..." [(ngModel)]="searchText" name="search">
+        </mat-form-field>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-button-toggle-group #viewType="matButtonToggleGroup" appearance="legacy" value="grid">            
+            <mat-button-toggle value="grid">
+                <mat-icon>view_module</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value="list">
+                <mat-icon>view_list</mat-icon>
+            </mat-button-toggle>           
+        </mat-button-toggle-group>
+    </div>
+</div>
+
+<div *ngIf="viewType.value == 'grid'" fxLayout="row wrap">    
+    <div *ngFor="let collaborateur of collaborateurs | CollaborateurSearchPipe : searchText | paginate: { itemsPerPage: 6, currentPage: page }" fxFlex="100" fxFlex.gt-md="33.3" fxFlex.md="50" class="p-2"> 
+        <mat-card class="p-0">  
+            <div class="bg-primary" fxLayout="row" fxLayoutAlign="space-between center">
+                <h3 class="collaborateur-name">{{collaborateur.nom}} {{collaborateur.prenom}}</h3> 
+                <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </div>
+            <mat-menu #menu="matMenu" xPosition="before" overlapTrigger="true">
+                <span (mouseleave)="menuTrigger.closeMenu()">
+                    <button mat-menu-item (click)="modifier(collaborateur);">
+                        <mat-icon>mode_edit</mat-icon>
+                        <span>Modifier</span>
+                    </button>
+                  <button mat-menu-item (click)="delete(collaborateur);">
+                        <mat-icon>delete</mat-icon>
+                        <span>Supp</span>
+                    </button> 
+                </span>
+            </mat-menu>
+            <div class="collaborateur-content" fxLayout="row" fxLayoutAlign="space-around center">
+                <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="collaborateur-img">
+                        <img *ngIf="collaborateur.image" [src]="collaborateur.image" class="transition-2">
+                        <img *ngIf="!collaborateur.image" src="assets/images/others/user.jpg" class="transition-2" >  
+                    </div>                                            
+                </div>
+                <div fxFlex="70" fxLayout="column" class="collaborateur-details transition-2">
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">date_range</mat-icon>
+                        <span>{{collaborateur.dateNaissance | date:'dd/MM/yyyy'}}</span>
+                    </p>
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">wc</mat-icon>
+                        <span>{{collaborateur.sexe}}</span>
+                    </p>
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">school</mat-icon>
+                        <span>{{collaborateur.specialite}}</span>
+                    </p>
+                   <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">assistant_photo</mat-icon>
+                        <span>{{collaborateur.pays.libelle}}</span>
+                    </p>
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">assistant_photo</mat-icon>
+                        <span>{{collaborateur.ville}}</span>
+                    </p> 
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">location_on</mat-icon>
+                        <span>{{collaborateur.adresse}}</span>
+                    </p> 
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">home</mat-icon>
+                        <span>{{collaborateur?.site.nom}}</span>
+                    </p> 
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<div *ngIf="viewType.value == 'list'" fxLayout="row wrap">
+    <div *ngFor="let collaborateur of collaborateurs | CollaborateurSearchPipe : searchText | paginate: { itemsPerPage: 6, currentPage: page }" fxFlex="100" class="p-2"> 
+        <mat-card class="p-0">  
+            <div class="bg-primary" fxLayout="row" fxLayoutAlign="space-between center">
+                <h3 class="collaborateur-name">{{collaborateur.nom}} {{collaborateur.prenom}}</h3> 
+                <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </div>
+            <mat-menu #menu="matMenu" xPosition="before"  overlapTrigger="true">
+                <span (mouseleave)="menuTrigger.closeMenu()">
+                    <button mat-menu-item (click)="modifier(collaborateur);">
+                        <mat-icon>mode_edit</mat-icon>
+                        <span>Modifer</span>
+                    </button>
+                  <button mat-menu-item (click)="delete(collaborateur);">
+                        <mat-icon>delete</mat-icon>
+                        <span>Supp</span>
+                    </button>
+                </span>
+            </mat-menu>
+            <div class="collaborateur-content" fxLayout="row" fxLayoutAlign="space-around center">
+                <div fxFlex="20" fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="collaborateur-img">
+                        <img *ngIf="collaborateur.image" [src]="collaborateur.image" class="transition-2"> 
+                        <img *ngIf="!collaborateur.image" src="assets/images/others/user.jpg" class="transition-2">  
+                    </div>                                            
+                </div>
+                <div fxFlex="80" fxFlex.xs="70" fxLayout="row" fxLayout.xs="column" class="collaborateur-details transition-2">
+                    <div fxFlex="30" fxFlex.xs="100" fxLayout="column">
+
+                        <p fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="text-muted">date_range</mat-icon>
+                            <span>{{collaborateur.dateNaissance | date:'dd/MM/yyyy' }}</span>
+                        </p>
+                        <p fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="text-muted">wc</mat-icon>
+                            <span>{{collaborateur.sexe}}</span>
+                        </p>
+                        <p fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="text-muted">school</mat-icon>
+                            <span>{{collaborateur.specialite}}</span>
+                        </p>
+                       <p fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="text-muted">assistant_photo</mat-icon>
+                            <span>{{collaborateur.pays.libelle}}</span>
+                        </p>                                          
+                    </div>
+                 <div fxFlex="40" fxFlex.xs="100" fxLayout="column">
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">assistant_photo</mat-icon>
+                        <span>{{collaborateur.ville}}</span>
+                    </p> 
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">location_on</mat-icon>
+                        <span>{{collaborateur.adresse}}</span>
+                    </p> 
+                    <p fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="text-muted">home</mat-icon>
+                        <ng-template [ngIf]="collaborateur.site.length>0">
+                            <span mat-button [matMenuTriggerFor]="listEmailActeur" class="bouton-voir-plus"> <strong>voir+</strong> </span>
+                            <mat-menu #listEmailActeur="matMenu" class="sycad-menu-panel">
+                                <ng-template ngFor let-email [ngForOf]="collaborateur.site">
+                                    <mat-card class="container-card-contact" click-stop-propagation>
+                                        <mat-card-content fxLayout="row" fxLayout.xs="row wrap" fxLayoutAlign="start">
+                                            <mat-list>
+                                                <mat-list-item>
+                    
+                                                    <h3 matLine>{{ collaborateur.site.nom }}</h3>
+                                                    <p matLine>
+                                                        <span>{{ collaborateur.site.adresse }}</span>
+                                                    </p>
+                                                </mat-list-item>
+                                            </mat-list>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </ng-template>
+                            </mat-menu>
+                        </ng-template>
+
+
+
+                    </p>                       
+                    </div> 
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div> 
+
+<div *ngIf="collaborateurs.length" fxLayout="row wrap">
+    <div fxFlex="100" class="p-2"> 
+        <mat-card class="p-0 text-center">           
+            <pagination-controls class="theme-pagination" [autoHide]="autoHide" [maxSize]="maxSize" (pageChange)="onPageChanged($event)"></pagination-controls>
+        </mat-card>
+    </div>
+</div>
+
+<!--  <div *ngIf="!collaborateurs.length" fxLayout="column" fxLayoutAlign="center center" class="collaborateur-spinner">   
+    <mat-spinner color="primary"></mat-spinner>    
+</div>  -->
+

@@ -1,0 +1,33 @@
+<div class="header">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <h2 class="fw-500 secondary-font"><span *ngIf="!pays.id">Créer un pays</span><span *ngIf="pays.id">Modifier: {{pays.libelle}}</span></h2>
+    </div>   
+</div>  
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()" autocomplete="off" class="pt-3">
+    <div mat-dialog-content>
+        <div fxLayout="row wrap">
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Code</mat-label>
+                    <input matInput  placeholder="Entrez le code" formControlName="code" required/>
+                    <mat-error *ngIf="formulaire.controls.code.errors?.required">Le code est obligatoire</mat-error> 
+                </mat-form-field>
+            </div> 
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Libellé</mat-label>
+                    <input matInput  placeholder="Entrer le libellé" formControlName="libelle" required/>
+                    <mat-error *ngIf="formulaire.controls.libelle.errors?.required">Le libelle est obligatoire</mat-error> 
+                </mat-form-field>
+            </div>  
+        </div>
+    </div>
+    <div mat-dialog-actions mat-dialog-actions fxLayout="row" align="end">
+            <button mat-raised-button color="warn" mat-button mat-dialog-close>Annuler</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!formulaire.valid">
+            <span *ngIf="!pays.id">Enregistrer</span><span *ngIf="pays.id">Mettre à jour</span>
+          </button>
+        
+    </div>
+</form> 
+ 

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { Observable } from 'rxjs';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,6 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppSettings } from 'src/app/app.settings'; 
 import { environment } from 'src/environments/environment';   
 import { map } from 'rxjs/operators';
+import { ConfirmDialogComponent, ConfirmDialogModel } from './shared/confirm-dialog/confirm-dialog.component';
+import { AlertDialogComponent } from './shared/alert-dialog/alert-dialog.component';
 
 
 @Injectable({
@@ -53,22 +54,26 @@ export class AppService {
     }) 
     return value; 
   } 
+ 
 
-  private mailApi = 'https://mailthis.to/codeninja'
-  public PostMessage(input: any) {
-    return this.http.post(this.mailApi, input, { responseType: 'text' })
-      .pipe(
-        map(
-          (response:any) => {
-            if (response) {
-              return response;
-            }
-          },
-          (error: any) => {
-            return error;
-          }
-        )
-      )
-  } 
+  public openConfirmDialog(title:string, message:string, isActive:boolean = true, buttonDroit: string = "Oui") {  
+    const dialogData = new ConfirmDialogModel(title, message,isActive, buttonDroit); 
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    }); 
+    return dialogRef; 
+  }
+
+  public openAlertDialog(message:string) {   
+    const dialogRef = this.dialog.open(AlertDialogComponent, {
+      maxWidth: "400px",
+      data: message
+    }); 
+    return dialogRef; 
+  }
+
 
 }
+
+

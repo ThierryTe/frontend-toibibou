@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {  NgxChartsModule } from '@swimlane/ngx-charts';
 import { DashboardComponent } from './dashboard.component';
-import { TilesComponent } from './tiles/tiles.component';
+import { CardComponent,} from './card/card.component';
+
 
 export const routes = [
   { path: '', component: DashboardComponent, pathMatch: 'full' }
@@ -13,7 +14,8 @@ export const routes = [
 @NgModule({
   declarations: [
     DashboardComponent,
-    TilesComponent,
+    CardComponent
+
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,157 @@
+<mat-card>
+    <div class="sycad-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" autocomplete="off">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <h3>
+                    <span *ngIf="!collaborateur.id">Créer un collaborateur </span>
+                    <span *ngIf="collaborateur.id">Modifier: [{{collaborateur.nom}} {{collaborateur.prenom}}]</span>
+                </h3>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+        <div mat-dialog-content> 
+            <mat-tab-group class="tab-content-wrapped">
+                <mat-tab> 
+                    <ng-template mat-tab-label>
+                        <mat-icon>face</mat-icon>
+                        Information
+                    </ng-template>
+                    <div fxFlex="40" fxLayoutAlign="center center">  
+                        <app-image-upload [base64]="formulaire.controls.image.value"
+                                        [fileSize]="20000"    
+                                        [acceptTypes]="'image/png, image/jpeg, image/jpg'"
+                                        (onFileChange)="fileChange($event)">
+                        </app-image-upload>  
+                    </div>
+                    <div fxLayout="row wrap" class="mt-2">
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Nom</mat-label>
+                                <input matInput placeholder="Entrez le nom" formControlName="nom" required> 
+                                <mat-error *ngIf="formulaire.controls.nom.errors?.required">Le nom est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Prénom</mat-label>
+                                <input matInput placeholder="Entrez le prénom" formControlName="prenom" required>
+                                <mat-error *ngIf="formulaire.controls.prenom.errors?.required">Le prénom est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Date de naissance (*)</mat-label>
+                            <input matInput [matDatepicker]="dateNaissance" formControlName="dateNaissance">
+                            <mat-datepicker-toggle matSuffix [for]="dateNaissance"></mat-datepicker-toggle>
+                            <mat-datepicker #dateNaissance></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                        <mat-form-field appearance="outline" fxFlex="90">
+                            <mat-label>Sexe</mat-label>
+                            <mat-select formControlName="sexe">
+                                <mat-option [value]="sexe" *ngFor="let sexe of sexes">
+                                    {{sexe}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="formulaire.controls.sexe.errors?.required">Le sexe est obligatoire</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                        <mat-form-field appearance="outline" fxFlex="90">
+                            <mat-label>Spécialité</mat-label>
+                            <mat-select formControlName="specialite">
+                                <mat-option [value]="specialite" *ngFor="let specialite of specialites">
+                                    {{specialite}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="formulaire.controls.specialite.errors?.required">La specialite est obligatoire</mat-error>
+                        </mat-form-field>
+                    </div> 
+                    </div>  
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <mat-icon>location_on</mat-icon>
+                        Adresse
+                    </ng-template>
+                    <div fxLayout="row wrap" class="mt-2">
+                        <div fxFlex="100" fxFlex.gt-sm="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Site</mat-label>
+                                <mat-select formControlName="site" multiple="true" required >
+                                    <mat-option *ngFor="let site of sites" [value]="site">
+                                        <span>{{site.nom}}</span>
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="formulaire.controls.site.errors?.required">Le site est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div> 
+                        <div fxFlex="100" fxFlex.gt-sm="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Pays</mat-label>
+                                <mat-select formControlName="pays" required>
+                                    <mat-option *ngFor="let pays of paysS" [value]="pays">
+                                        <span>{{pays.libelle}}</span>
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="formulaire.controls.pays.errors?.required">Le pays est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div> 
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Ville</mat-label>
+                                <input matInput placeholder="Entrez la ville" formControlName="ville" required>
+                                <mat-error *ngIf="formulaire.controls.ville.errors?.required">La ville est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Adresse</mat-label>
+                                <input matInput placeholder="Entrez l'adresse" formControlName="adresse" required>
+                                <mat-error *ngIf="formulaire.controls.adresse.errors?.required">L'adresse' est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <mat-icon>security</mat-icon>
+                        Compte
+                    </ng-template>
+                    <div fxLayout="row wrap" class="mt-2">
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-icon matPrefix class="mr-1 text-muted">lock</mat-icon>
+                            <mat-label>Mot de passe</mat-label>
+                            <input matInput placeholder="Mot de passe" formControlName="password" required #password [type]="passwordHide ? 'password' : 'text'">
+                            <mat-error *ngIf="formulaire.controls.password.errors?.required">Le mot de passe est obligatoire</mat-error>
+                            <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide"type="button" class="text-muted">
+                                <mat-icon matSuffix >{{passwordHide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                            </button>
+                        </mat-form-field> 
+                    </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Confirmation</mat-label>
+                                <input matInput placeholder="Confirmer le mot de passe" formControlName="confirmation" required>
+                                <mat-error *ngIf="formulaire.controls.confirmation.errors?.required">La confirmation est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group> 
+        </div>
+    </mat-card-content>
+        <div mat-dialog-actions mat-dialog-actions fxLayout="row" fxLayout="row" [fxLayoutGap]="'20px'" fxLayoutAlign="end center" class="w-100">
+                <button mat-raised-button color="warn" type="button" (click)="resetForm()">Annuler</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!formulaire.valid">
+                    <span *ngIf="!collaborateur.id">Valider</span><span *ngIf="collaborateur.id">Mettre à jour</span>
+                </button> 
+        </div>
+    </form>
+    </mat-card>

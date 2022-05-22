@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+
 
 @Component({
   selector: 'app-user-menu',
@@ -8,12 +8,9 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class UserMenuComponent implements OnInit {
   public userImage = 'assets/images/others/admin.jpg';
-  constructor(public authenticationService:AuthenticationService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  public logout(){
-    this.authenticationService.logout();
-  }
 }

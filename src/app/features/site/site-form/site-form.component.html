@@ -1,0 +1,73 @@
+
+<div *ngIf="isLoadingResults" fxLayout="column" fxLayoutAlign="center center" class="site-spinner">   
+    <mat-spinner color="primary"></mat-spinner>    
+</div> 
+    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" autocomplete="off">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <h3>
+                    <span *ngIf="!site.id">Créer un lieu </span>
+                    <span *ngIf="site.id">Modifier: [{{site.nom}}]</span>
+                </h3>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+        <div mat-dialog-content> 
+                    <div fxLayout="row wrap" class="mt-2">
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Nom de l'établissement</mat-label>
+                                <input matInput placeholder="Optionnel,apparait sur le profil et dans les emails" formControlName="nom">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Adresse</mat-label>
+                                <input matInput placeholder="Adresse poste de l'établissement" formControlName="adresse" required>
+                                <mat-error *ngIf="formulaire.controls.adresse.errors?.required">L'adresse est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="Entrez un format de mail valide" formControlName="email" required>
+                                <mat-error *ngIf="formulaire.controls.email.errors?.required">L'adresse email est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Numéro du cabinet</mat-label>
+                                <input matInput placeholder="Entrez le numéro" formControlName="telephone" required>
+                                <mat-error *ngIf="formulaire.controls.telephone.errors?.required">Le téléphone est obligatoire</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Fax</mat-label>
+                                <input matInput placeholder="Entrez le fax" formControlName="fax">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                            <mat-radio-group formControlName="accessibilite" aria-labelledby="site-accessibilite"class="w-100">
+                                <label id="site-accessibilite">Accessibilité </label><br>
+                                <mat-radio-button value="Ascenseur" labelPosition="after">Ascenseur</mat-radio-button>
+                                <mat-radio-button value="Accès handicapé" labelPosition="after">Accès handicapé</mat-radio-button>
+                            </mat-radio-group>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-md="50" class="px-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Etage</mat-label>
+                            <input matInput placeholder="Numéro de l'étage" type="number" formControlName="etage">
+                        </mat-form-field>
+                    </div>
+                    </div>  
+        </div>
+    </mat-card-content>
+        <div mat-dialog-actions mat-dialog-actions fxLayout="row" fxLayout="row" [fxLayoutGap]="'20px'" fxLayoutAlign="end center" class="w-100">
+                <button mat-raised-button color="warn" type="button" (click)="resetForm()">Annuler</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!formulaire.valid">
+                    <span *ngIf="!site.id">Ajouter</span><span *ngIf="site.id">Mettre à jour</span>
+                </button> 
+        </div>
+    
+    </form>

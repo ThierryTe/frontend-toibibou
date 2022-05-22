@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export abstract class GeneralService <ITEM>{
@@ -11,8 +10,8 @@ export abstract class GeneralService <ITEM>{
     return this.http.post(this.getUrl(), ressource);
   }
 
-  public update(ressource: any) {
-    return this.http.patch(this.getUrl(), ressource);
+  public update(id:any,ressource: any) {
+    return this.http.patch(this.getUrl() + "/" + id, ressource);
   }
   public get(id: string | number) {
     return this.http.get<ITEM>(this.getUrl() + "/" + id);  
@@ -22,7 +21,7 @@ export abstract class GeneralService <ITEM>{
     return this.http.delete(this.getUrl() + "/" + id);
   }
   public findById(id:string | number){
-    return this.http.get<ITEM>(this.getUrl()+""+id);
+    return this.http.get<ITEM>(this.getUrl()+""+ id);
 }
 public getAll(): Observable<ITEM[]>{
   return this.http.get<ITEM[]>(this.getUrl());

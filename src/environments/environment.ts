@@ -4,25 +4,17 @@
 
 export const environment = {
   production: false,
-
-  auth:{
-  LOGIN_API: "http://localhost:1993/api/auth/login",
-  INSCRIPTION_API: "http://localhost:1993/api/auth/inscription",
-  ME_API: "http://localhost:1993/api/auth/me",
-  USERS_API:"http://localhost:1993/api/auth/users",
-  REFRESH_TOKEN_API: "http://localhost:1993/api/auth/refreshtoken",
-  CHECK_IF_AM_LOGIN:''
-  },
   APP:{
-   LOCATION_API:"http://localhost:1993/api/locations"
+   SITE_API:"http://localhost:9090/api/sites",
+   COLLABORATEUR_API:"http://localhost:9090/api/collaborateurs",
+   PAYS_API:"http://localhost:9090/api/pays",
   },
   FRONTEND_ROUTES:{
     ADMIN:"",
     VUE_ADMIN: "",
-    LOGIN:"login",
-    USERS: "users",
-    INSCRIPTION: "inscription",
-    LOCATION:'location'
+    SITE:"site",
+    COLLABORATEUR: "collaborateur",
+    PAYS: "pays",
   },
   url: ''
 };

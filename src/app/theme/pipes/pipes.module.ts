@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FilterByIdPipe } from './filter-by-id.pipe'; 
 import { ProfilePicturePipe } from './profilePicture.pipe';
 import { UserSearchPipe } from './user-search.pipe';
+import { collaborateurSearchPipe } from './collaborateur-search.pipe';
+import { SiteSearchPipe } from './site-search.pipe';
 
 @NgModule({
     imports: [ 
@@ -12,12 +14,16 @@ import { UserSearchPipe } from './user-search.pipe';
     declarations: [
         FilterByIdPipe,
         ProfilePicturePipe,
-        UserSearchPipe
+        UserSearchPipe,
+        collaborateurSearchPipe,
+        SiteSearchPipe
     ],
     exports: [
         FilterByIdPipe,
         ProfilePicturePipe,
-        UserSearchPipe
+        UserSearchPipe,
+        collaborateurSearchPipe,
+        SiteSearchPipe
     ]
 })
 export class PipesModule { }

@@ -49,11 +49,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import { PipesModule } from '../theme/pipes/pipes.module';
 import { DirectivesModule } from '../theme/directives/directives.module';
 import { LangComponent } from './lang/lang.component';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 
 @NgModule({
   declarations: [
     LangComponent,
+    AlertDialogComponent,
+    ConfirmDialogComponent,
+    ImageUploadComponent
   ],
   imports: [
     CommonModule,
@@ -97,8 +103,8 @@ import { LangComponent } from './lang/lang.component';
     MatTooltipModule,
     MatStepperModule,
     PerfectScrollbarModule,
-    PipesModule,
-    DirectivesModule
+    DirectivesModule,
+    MatButtonToggleModule
   ],
   exports: [
     RouterModule,
@@ -141,9 +147,12 @@ import { LangComponent } from './lang/lang.component';
     MatTooltipModule,
     MatStepperModule,
     PerfectScrollbarModule,
-    PipesModule,
     DirectivesModule,
+    MatButtonToggleModule,
     LangComponent,
+    AlertDialogComponent,
+    ConfirmDialogComponent,
+    ImageUploadComponent
     
   ],
   providers:[

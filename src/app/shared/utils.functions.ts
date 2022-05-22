@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
-export class LocationUtils {
+export class ToibibouUtils {
 
 
 

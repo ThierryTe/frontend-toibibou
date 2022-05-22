@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "location-template": {
+    "toibibou-template": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -75,18 +75,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "location-template:build"
+            "browserTarget": "toibibou-template:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "location-template:build:production"
+              "browserTarget": "toibibou-template:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "location-template:build"
+            "browserTarget": "toibibou-template:build"
           }
         },
         "test": {
@@ -124,11 +124,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "location-template:serve"
+            "devServerTarget": "toibibou-template:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "location-template:serve:production"
+              "devServerTarget": "toibibou-template:serve:production"
             }
           }
         },
@@ -158,21 +158,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "location-template:build",
-            "serverTarget": "location-template:server"
+            "browserTarget": "toibibou-template:build",
+            "serverTarget": "toibibou-template:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "location-template:build:production",
-              "serverTarget": "location-template:server:production"
+              "browserTarget": "toibibou-template:build:production",
+              "serverTarget": "toibibou-template:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "location-template:build:production",
-            "serverTarget": "location-template:server:production",
+            "browserTarget": "toibibou-template:build:production",
+            "serverTarget": "toibibou-template:server:production",
             "routes": [
               "/"
             ]
@@ -184,5 +184,5 @@
       }
     }
   },
-  "defaultProject": "location-template"
+  "defaultProject": "toibibou-template"
 }

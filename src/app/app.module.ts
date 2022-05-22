@@ -19,11 +19,8 @@ import { AppComponent } from './app.component';
 import { AppSettings } from './app.settings';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AdminModule } from './layout/admin-page/admin.module';
-import { LocationRoutingModule } from './location-routing.module';
-import { AuthInterceptor, authInterceptorProviders } from './features/login/_helpers/auth.interceptor';
+import {ToibibouRoutingModule } from './toibibou-routing.module';
  
-
-
 
 @NgModule({
   declarations: [
@@ -43,13 +40,11 @@ import { AuthInterceptor, authInterceptorProviders } from './features/login/_hel
         deps: [HttpClient]
       }
     }),
-    LocationRoutingModule,
+    ToibibouRoutingModule,
     
   ],
   providers: [ 
     AppSettings,
-    authInterceptorProviders,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     DatePipe,
     { provide: MatPaginatorIntl, useClass: MatPaginatorI18nService }
   ],
